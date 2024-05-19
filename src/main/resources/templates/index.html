@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th="http://www.thymeleaf.org" th:replace= "~{base::layout(~{::title},~{::section})}">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>MongoDB Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-fv7T/u6IlQRAzYEfBKMgl3aKBqWqGnGnL8glzE2KXKsPp/demvjrUcsO3jE7yQID" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<section class="container mt-5">
+    <div class="row">
+        <div class="card p-3">
+            <div class="card-body">
+                <h2>Server Status</h2>
+                <pre th:text="${serverStatus}"></pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="card p-3">
+        <div class="card-body">
+            <h2>Databases</h2>
+            <ul class="list-group" id="databaseNames">
+                <li class="list-group-item" th:each="dbName : ${databaseNames}" th:text="${dbName}"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card p-3">
+        <div class="card-body">
+            <h2>Collections in Selected Database</h2>
+            <select id="databaseSelect" name="selectedDb" class="form-control">
+                <option th:each="dbName : ${databaseNames}" th:value="${dbName}" th:text="${dbName}" th:selected="${dbName} == ${selectedDb}"></option>
+            </select>
+            <ul id="collections" class="list-group mt-3" th:fragment="collectionsFragment">
+                <li class="list-group-item" th:each="collection : ${collections}" th:text="${collection}"></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-pir6DA7G8zU6KOyICN9G+J9TISLkr9VDKwgxERkD2LOKPDPjSo8e9SMxOUVsBoN5" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pprn3073KE6tl6j3Mf2P8W64C8390LKSMJ7lzBIpEnYygkHaNbv9+8c6p0HB5B8g" crossorigin="anonymous"></script>
+</body>
+</html>
