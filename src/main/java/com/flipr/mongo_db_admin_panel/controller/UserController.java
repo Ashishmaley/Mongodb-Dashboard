@@ -1,12 +1,11 @@
 package com.flipr.mongo_db_admin_panel.controller;
 
-import com.flipr.mongo_db_admin_panel.modles.User;
+import com.flipr.mongo_db_admin_panel.models.User;
 import com.flipr.mongo_db_admin_panel.repositories.UserRepository;
 import com.flipr.mongo_db_admin_panel.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang = "en" xmlns:th="http://www.thymeleaf.org" th:replace= "~{base::layout(~{::title},~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::title},~{::section})}">
+
 <head>
     <meta charset="UTF-8">
     <title>Create Database</title>
@@ -7,19 +8,28 @@
 </head>
 <body>
 <section>
-<div class="container">
-    <h2 class="mt-5">Create MongoDB Database</h2>
-    <form action="/createDatabase" method="post">
-        <div class="form-group">
-            <label for="databaseName">Database Name:</label>
-            <input type="text" class="form-control" id="databaseName" name="databaseName" required>
+    <div class="container">
+        <h2 class="mt-5">Create MongoDB Database</h2>
+        <form action="/createDatabase" method="post">
+            <div class="form-group">
+                <label for="databaseName">Database Name:</label>
+                <input type="text" class="form-control" id="databaseName" name="databaseName" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Database</button>
+        </form>
+        <div class="mt-3">
+            <p th:text="${message}"></p>
         </div>
-        <button type="submit" class="btn btn-primary">Create Database</button>
-    </form>
-    <div class="mt-3">
-        <p th:text="${message}"></p>
+        <!-- Section for deleting a database -->
+        <h2 class="mt-5">Delete MongoDB Database</h2>
+        <form action="/deleteDatabase" method="post">
+            <div class="form-group">
+                <label for="deleteDatabaseName">Database Name:</label>
+                <input type="text" class="form-control" id="deleteDatabaseName" name="databaseName" required>
+            </div>
+            <button type="submit" class="btn btn-danger">Delete Database</button>
+        </form>
     </div>
-</div>
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

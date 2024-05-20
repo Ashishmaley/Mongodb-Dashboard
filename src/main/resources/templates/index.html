@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang = "en" xmlns:th="http://www.thymeleaf.org" th:replace= "~{base::layout(~{::title},~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::title},~{::section})}">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>MongoDB Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-fv7T/u6IlQRAzYEfBKMgl3aKBqWqGnGnL8glzE2KXKsPp/demvjrUcsO3jE7yQID" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -40,6 +41,21 @@
             </ul>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let doc = document.getElementById("databaseSelect");
+            doc.addEventListener("change", function() {
+                fetchCollections();
+            });
+
+            function fetchCollections() {
+                var selectedDb = document.getElementById("databaseSelect").value;
+                console.log(selectedDb);
+                // Reload the page with the selected database as a query parameter
+                window.location.href = "/api/mongo?databaseSelect=" + encodeURIComponent(selectedDb);
+            }
+        });
+    </script>
 </section>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-pir6DA7G8zU6KOyICN9G+J9TISLkr9VDKwgxERkD2LOKPDPjSo8e9SMxOUVsBoN5" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pprn3073KE6tl6j3Mf2P8W64C8390LKSMJ7lzBIpEnYygkHaNbv9+8c6p0HB5B8g" crossorigin="anonymous"></script>

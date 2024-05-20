@@ -3,7 +3,7 @@ package com.flipr.mongo_db_admin_panel.services;
 import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
-import com.flipr.mongo_db_admin_panel.modles.User;
+import com.flipr.mongo_db_admin_panel.models.User;
 import com.flipr.mongo_db_admin_panel.repositories.UserRepository;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;

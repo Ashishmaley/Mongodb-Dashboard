@@ -1,6 +1,6 @@
 package com.flipr.mongo_db_admin_panel.services;
 
-import com.flipr.mongo_db_admin_panel.modles.User;
+import com.flipr.mongo_db_admin_panel.models.User;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;

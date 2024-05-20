@@ -1,6 +1,6 @@
 package com.flipr.mongo_db_admin_panel.config;
 
-import com.flipr.mongo_db_admin_panel.modles.User;
+import com.flipr.mongo_db_admin_panel.models.User;
 import com.flipr.mongo_db_admin_panel.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -3,7 +3,7 @@ package com.flipr.mongo_db_admin_panel.config;
 import java.util.Collection;
 import java.util.Collections;
 
-import com.flipr.mongo_db_admin_panel.modles.User;
+import com.flipr.mongo_db_admin_panel.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package com.flipr.mongo_db_admin_panel.modles;
+package com.flipr.mongo_db_admin_panel.models;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

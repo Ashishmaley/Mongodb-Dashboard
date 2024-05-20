@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang = "en" xmlns:th="http://www.thymeleaf.org" th:replace= "~{base::layout(~{::title},~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::title},~{::section})}">
 
 <head>
     <meta charset="UTF-8">
@@ -8,38 +8,38 @@
 </head>
 <body>
 <section>
-<div  class="container">
-    <h2 class="mt-5">Create MongoDB User</h2>
-    <form action="/createUser" method="post">
-        <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" class="form-control" id="username" name="username" required>
+    <div class="container">
+        <h2 class="mt-5">Create MongoDB User</h2>
+        <form action="/createUser" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="databaseName">Database Name:</label>
+                <input type="text" class="form-control" id="databaseName" name="databaseName" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select class="form-control" id="role" name="role" required>
+                    <option value="">Select a role</option>
+                    <option value="read">Read</option>
+                    <option value="readWrite">Read/Write</option>
+                    <option value="dbAdmin">Database Admin</option>
+                    <option value="userAdmin">User Admin</option>
+                    <option value="clusterAdmin">Cluster Admin</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Create User</button>
+        </form>
+        <div class="m-3">
+            <p th:text="${message}"></p>
         </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <div class="form-group">
-            <label for="databaseName">Database Name:</label>
-            <input type="text" class="form-control" id="databaseName" name="databaseName" required>
-        </div>
-        <div class="form-group">
-            <label for="role">Role:</label>
-            <select class="form-control" id="role" name="role" required>
-                <option value="">Select a role</option>
-                <option value="read">Read</option>
-                <option value="readWrite">Read/Write</option>
-                <option value="dbAdmin">Database Admin</option>
-                <option value="userAdmin">User Admin</option>
-                <option value="clusterAdmin">Cluster Admin</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Create User</button>
-    </form>
-    <div class="mt-3">
-        <p th:text="${message}"></p>
     </div>
-</div>
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

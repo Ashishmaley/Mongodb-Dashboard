@@ -1,7 +1,9 @@
 package com.flipr.mongo_db_admin_panel.services;
 
+import com.flipr.mongo_db_admin_panel.models.MongoUser;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,6 +30,12 @@ public class MongoService {
     public MongoDatabase getDatabase(String dbName) {
         return mongoClient.getDatabase(dbName);
     }
+    public List<Document> getUsers(String dbName) {
+        MongoDatabase db = getDatabase(dbName);
+        Document commandResult = db.runCommand(new Document("usersInfo", 1));
+        return (List<Document>) commandResult.get("users");
+    }
+
 
     public List<Document> getCollections(String dbName) {
         List<Document> collections = new ArrayList<>();
@@ -59,6 +67,35 @@ public class MongoService {
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    public boolean deleteUser(String username, String databaseName) {
+        try {
+            MongoDatabase database = mongoClient.getDatabase(databaseName);
+            Document result = database.runCommand(new Document("dropUser", username));
+
+            // Check the command result to ensure the user was actually dropped
+            if (result.getDouble("ok") == 1.0) {
+                System.out.println("User " + username + " successfully deleted from database " + databaseName);
+                return true;
+            } else {
+                System.err.println("Failed to delete user " + username + " from database " + databaseName + ": " + result.toJson());
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    public boolean deleteDatabase(String databaseName) {
+        try {
+            mongoClient.getDatabase(databaseName).drop();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
