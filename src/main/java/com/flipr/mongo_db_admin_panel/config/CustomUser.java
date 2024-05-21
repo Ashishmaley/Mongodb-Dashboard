@@ -2,6 +2,7 @@ package com.flipr.mongo_db_admin_panel.config;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import com.flipr.mongo_db_admin_panel.models.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,8 +25,7 @@ public class CustomUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        String role = user.getRole();
-        return Collections.singleton(new SimpleGrantedAuthority(role));
+        return List.of();
     }
 
     @Override

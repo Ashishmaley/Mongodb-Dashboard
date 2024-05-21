@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService {
     public User saveUser(User user, String url) {
         String pass = passwordEncoder.encode(user.getPassword());
         user.setPassword(pass);
-        user.setRole("ROLE_ADMIN");
         user.setEnable(false);
+        user.setUri("mongodb://localhost:27017");
         user.setVerificationCode(UUID.randomUUID().toString());
         User newUser = userRepo.save(user);
         if (newUser != null) {

@@ -16,7 +16,7 @@ public class User {
     private String id;
     private String userName;
     private String password;
-    private String role;
+    private String Uri;
     private boolean enable;
     private String verificationCode;
 }

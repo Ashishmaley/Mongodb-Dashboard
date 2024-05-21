@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang = "en" xmlns:th="http://www.thymeleaf.org" th:replace= "~{base::layout(~{::title},~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::title},~{::section})}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,19 +16,19 @@
                 <h5 class="card-header">Login</h5>
                 <form class="d-flex flex-column" action="/signIn" method="post">
                     <div th:if="${param.error}">
-                        <p style="color: red;">Invalid username and password.</p>
+                        <p style="color: red;">Invalid username, password, or URI.</p>
                     </div>
                     <div class="form-group m-1">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="Enter your email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                            else.</small>
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username">
                     </div>
                     <div class="form-group m-1">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-                               placeholder="Enter your password">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password">
+                    </div>
+                    <div class="form-group m-1">
+                        <label for="uri" class="form-label">MongoDB URI</label>
+                        <input type="text" name="uri" class="form-control" id="uri" placeholder="Enter MongoDB URI">
                     </div>
                     <button type="submit" class="btn btn-primary my-3 w-75 mx-auto container d-flex justify-content-center">Login</button>
                 </form>

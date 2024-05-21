@@ -15,10 +15,13 @@ import java.util.List;
 @Service
 public class MongoService {
 
-    private final MongoClient mongoClient;
+    private MongoClient mongoClient;
 
-    public MongoService(@Value("${spring.data.mongodb.uri}") String connectionString) {
+    public MongoService(@Value("${default.uri}") String connectionString) {
         this.mongoClient = MongoClients.create(connectionString);
+    }
+    public void setMongoClient(String uri){
+        mongoClient =  MongoClients.create(uri);
     }
 
     public List<String> getDatabaseNames() {
